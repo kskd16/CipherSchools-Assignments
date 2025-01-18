@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int naiveSum(const vector<int>& nums) {
+    int total = 0;
+    for (int i = 0; i < nums.size(); ++i) {
+        total += nums[i];
+    }
+    return total;
+}
+
+
+int recursiveSum(const vector<int>& nums, int index) {
+    if (index == nums.size()) {
+        return 0;
+    }
+  
+    return nums[index] + recursiveSum(nums, index + 1);
+}
+
+int main() {
+    vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Example list of integers
+    
+    // Using naive approach (loop)
+    int sum_naive = naiveSum(nums);
+    cout << "Sum using naive approach: " << sum_naive << endl;
+
+    // Using recursive approach
+    int sum_recursive = recursiveSum(nums, 0);
+    cout << "Sum using recursive approach: " << sum_recursive << endl;
+
+    // Using built-in accumulate function
+    int sum_accumulate = accumulate(nums.begin(), nums.end(), 0);
+    cout << "Sum using accumulate function: " << sum_accumulate << endl;
+
+    return 0;
+}
